@@ -30,8 +30,8 @@ export class Home extends React.Component {
             <div>
                 <div className="home__banner">
                     <div className="home__logo-image" />
-                    <h1 className="home__banner-heading">Awesome Company</h1>
-                    <div className="home__tagline">Awesome tagline</div>
+                    <h1 className="home__banner-heading">Company</h1>
+                    <div className="home__tagline">tagline</div>
                 </div>
                 <div className="products">
                     <div className="cart__count">Number of items in cart: <strong>{this.props.cart.length}</strong></div>
