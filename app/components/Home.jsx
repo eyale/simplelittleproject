@@ -27,14 +27,15 @@ export class Home extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="home__banner">
-                    <div className="home__logo-image" />
-                    <h1 className="home__banner-heading">Company</h1>
-                    <div className="home__tagline">tagline</div>
-                </div>
+            <div className="home">
+                <h1>
+                🎉🌟😀 Wellcome! ✨🦆🎊 
+                </h1>
                 <div className="products">
-                    <div className="cart__count">Number of items in cart: <strong>{this.props.cart.length}</strong></div>
+                    <div className="cart__count">
+                        Number of items in cart: 
+                        <strong>{this.props.cart.length}</strong>
+                    </div>
                     <h2 className="products__heading">Products</h2>
                     <div className="products__items">
                         {this.renderProducts()}
