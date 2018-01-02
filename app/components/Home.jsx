@@ -32,13 +32,12 @@ export class Home extends React.Component {
                 🎉🌟😀 Wellcome! ✨🦆🎊 
                 </h1>
                 <div className="products">
-                    <div className="cart__count">
-                        Number of items in cart: 
-                        <strong>{this.props.cart.length}</strong>
-                    </div>
                     <h2 className="products__heading">Products</h2>
                     <div className="products__items">
                         {this.renderProducts()}
+                    </div>
+                    <div className="cart__count">
+                        {`Number of items in cart: ${this.props.cart.length}`}
                     </div>
                 </div>
             </div>

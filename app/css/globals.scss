@@ -4,3 +4,63 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
 }
+
+@media only screen and (min-width: 319px) {
+    .grid {
+        width: 300px;
+        padding: 0 10px;
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        height: 100vh;
+    }    
+}
+
+@media only screen and (min-width: 479px) {
+    .grid {
+        width: 460px;
+        padding: 0 10px;
+    }    
+}
+
+@media only screen and (min-width: 559px) {
+    .grid {
+        width: 540px;
+        padding: 0 10px;
+        font-size: 16px;
+    }    
+}
+
+@media only screen and (min-width: 767px) {
+    .grid {
+        width: 748px;
+        padding: 0 10px;
+        font-size: 18px;
+    }    
+}
+
+@media only screen and (min-width: 991px) {
+    .grid {
+        width: 972px;
+        padding: 0 10px;
+    }    
+}
+
+@media only screen and (min-width: 1119px) {
+    .grid {
+        width: 1180px;
+        padding: 0 10px;
+        font-size: 20px;
+    }    
+}
+
+@media only screen and (min-width: 1367px) {
+    .grid {
+        width: 1347px;
+        padding: 0 10px;
+    }    
+}
+

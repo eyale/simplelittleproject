@@ -6,10 +6,13 @@ export default class AppView extends React.Component {
         return (
             <div>
                 <nav className="main-nav">
-                    <Link className="main-nav__link" to="/">Home</Link>
-                    <Link className="main-nav__link" to="about">About Me</Link>
+                    <div className='grid'>
+                            <Link className="main-nav__link" to="/">Home</Link>
+                            <Link className="main-nav__link" to="about">About Me</Link>
+                            <Link className="main-nav__link" to="board">Board</Link>
+                    </div>
                 </nav>
-                {this.props.children}
+                    {this.props.children}
             </div>
         );
     }

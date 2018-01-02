@@ -4,16 +4,20 @@
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+
+    h1 {
+        width: 180px;
+        text-align: center;
+    }
 }
 
 .products {
-    background: #FFF;
+    background: #e0e0e0;
     border-radius: 5px;
-    margin: 0 auto;
-    opacity: 0.8;
     padding: 15px 0;
     text-align: center;
-    width: 50%;
+    width: 90%;
+    color: #545454;    
 
     &__heading {
         margin: 0;
@@ -21,11 +25,12 @@
 
     &__items {
         display: flex;
-        padding-left: 15px;
+        justify-content: center;
+        align-items: center;
     }
 
     &__item {
-        margin-right: 15px;
+        margin: 0 5px;
     }
 
     &__item-price {
@@ -36,7 +41,7 @@
     &__item-button {
         background: #046380;
         border: 0;
-        color: #FFF;
+        color: #fff;
         cursor: pointer;
         margin: 0 0 5px;
         padding: 5px;
@@ -46,7 +51,17 @@
 .cart__count {
     border: 1px solid #333;
     border-radius: 5px;
-    margin: 20px auto;
+    margin: 20px 5px;
     padding: 10px;
-    width: 250px;
+    max-width: 250px;
+    align-self: center;
+    display: inline-flex;
+}
+
+@media only screen and (min-width: 479px) {
+    .home {
+        h1 {
+            width: 180px;
+        }
+    }    
 }
