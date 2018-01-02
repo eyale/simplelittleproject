@@ -3,8 +3,35 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { addToCart, removeFromCart } from 'actions/ProductsActions';
+import Column from './Column'
 
 export class Board extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.handleAddColumnClick = this.handleAddColumnClick.bind(this)
+        this.togglePopup = this.togglePopup.bind(this)
+        this.handleChangeColumnTitle = this.handleChangeColumnTitle.bind(this)
+
+        this.state = {
+            isPopup: false,
+            columnTitle: ''
+        }
+    }
+    
+    componentDidUpdate() {
+        console.log(this.state)
+    }
+
+    renderColumns() {
+        console.log(this.props)
+        return _.map(this.props.items, column => {
+            return (
+                <Column key={Math.random()} />
+            )
+        })
+    }
+
     renderProducts() {
         return _.map(this.props.items, product => {
             const isInCart = _.indexOf(this.props.cart, product.id) !== -1;
@@ -25,36 +52,32 @@ export class Board extends React.Component {
         });
     }
 
+    togglePopup (e) {
+        e.preventDefault();
+        
+        this.setState({isPopup: !this.state.isPopup})   
+    }
+
+    handleChangeColumnTitle(e) {
+        this.setState({columnTitle: e.target.value})
+    }
+
+    handleAddColumnClick (e) {
+        e.preventDefault();
+        this.togglePopup(e)
+    }
+
     render() {
         return (
             <div className="board">
                 <div className="grid">
+                    {this.renderColumns()}
                     <div className="columns">
-                        <div className="columns__item">
-                            <div className="header">Column</div>
-                            <siv className="settings">...</siv>
-                            <div className="card">Card1</div>
-                            <button className="add-card">Add a card...</button>
-                        </div>
-                        <div className="columns__item">
-                            <div className="header">Column</div>
-                            <siv className="settings">...</siv>
-                            <div className="card">Card1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed earum animi odio perferendis, culpa molestiae sit fugit consequatur quos exercitationem aliquam voluptate recusandae sequi dicta omnis, impedit aut, possimus veritatis!</div>
-                            <button className="add-card">Add a card...</button>
-                        </div>
-                        <div className="columns__item">
-                            <div className="header">Column</div>
-                            <siv className="settings">...</siv>
-                            <div className="card">Card1</div>
-                            <button className="add-card">Add a card...</button>
-                        </div>
-                        <div className="columns__item">
-                            <div className="header">Column</div>
-                            <siv className="settings">...</siv>
-                            <div className="card">Card1</div>
-                            <button className="add-card">Add a card...</button>
-                        </div>
-                        <button className="add-column">Add a list...</button>
+                        <button
+                            onClick={this.togglePopup} 
+                            className="add-column">
+                            Add a list...
+                        </button>
                     </div>
                     
                     {/* <div className="products">
@@ -69,6 +92,21 @@ export class Board extends React.Component {
                     </div>
                      */}
                 </div>
+
+                {
+                    this.state.isPopup 
+                    && <div onClick={this.togglePopup} className="popup">
+                        <div onClick={(e) => e.stopPropagation()} className="popup__content">
+                            <input
+                                type="text"
+                                placeholder="Column name"
+                                onChange={this.handleChangeColumnTitle}
+                                name=""
+                                id=""/>
+                            <button onClick={this.handleAddColumnClick}>Add column</button>
+                        </div>
+                    </div>
+                }
             </div>
         );
     }
