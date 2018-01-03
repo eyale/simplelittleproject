@@ -5,64 +5,31 @@ import { connect } from 'react-redux';
 import { addToCart, removeFromCart } from 'actions/ProductsActions';
 
 export class Column extends React.Component {
-    renderProducts() {
-        return _.map(this.props.items, product => {
-            const isInCart = _.indexOf(this.props.cart, product.id) !== -1;
-
+    renderColumns() {
+        console.log('props',this.props) 
+        const { columns } = this.props
+        return columns.map((column, idx) => {
             return (
-                <div key={product.id} className="products__item">
-                    <strong>{product.name}</strong>
-                    <div className="products__item-price">${product.price}</div>
-                    <button
-                        className="products__item-button"
-                        onClick={this.onCartChange.bind(this, isInCart, product.id)}
-                    >
-                        {isInCart ? 'Remove from Cart' : 'Add to Cart'}
-                    </button>
-                    <div>{product.description}</div>
+                <div key={Math.random()} className="columns__item">
+                    <div className="header">{column.name}</div>
+                    <siv className="settings">...</siv>
+                    <div className="card">Card1</div>
+                    <button className="add-card">Add a card...</button>
                 </div>
-            );
-        });
+            )
+        })
     }
 
     render() {
         return (
-            <div>
-                <div className="columns__item">
-                    <div className="header">Column</div>
-                    <siv className="settings">...</siv>
-                    <div className="card">Card1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed earum animi odio perferendis, culpa molestiae sit fugit consequatur quos exercitationem aliquam voluptate recusandae sequi dicta omnis, impedit aut, possimus veritatis!</div>
-                    <button className="add-card">Add a card...</button>
-                </div>
-                        {/* <div className="products">
-                                <div className="cart__count">
-                                    Number of items in cart: 
-                                    <strong>{this.props.cart.length}</strong>
-                                </div>
-                                <h2 className="products__heading">Products</h2>
-                                <div className="products__items">
-                                    {this.renderProducts()}
-                                </div>
-                            </div>
-                        */}
-            </div>
+            <div>{this.renderColumns()}</div>
         );
-    }
-
-    onCartChange(isInCart, id) {
-        const dispatch = this.props.dispatch;
-        if (isInCart) {
-            dispatch(removeFromCart(id));
-            return;
-        }
-        dispatch(addToCart(id));
     }
 }
 
 function mapStateToProps(state) {
     return {
-        items: state.products.get('items').toJS(),
-        cart: state.products.get('cart').toJS()
+        columns: state.columns
     };
 }
 

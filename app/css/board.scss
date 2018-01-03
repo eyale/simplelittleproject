@@ -38,6 +38,7 @@
             background: #fff;
             border-radius: 4px;
             padding: 5px;
+            margin: 10px 0;
         }
         .add-card {
             margin: 0;
@@ -86,6 +87,7 @@
         width: 300px;
         text-align: center;
         cursor: default;    
+        border-radius: 4px;
     
         input,
         button {
@@ -94,12 +96,22 @@
             border: 0;
             font-size: 16px;
             margin: 10px auto;
-
+            line-height: 44px;
+        }
+        input {
+            padding: 0 10px;
         }
 
         button {
             border: 0;
-    
+            box-shadow: 0 0 9px 3px rgba(0,0,0,.1);
+            &:hover {
+                box-shadow: 0 0 9px 6px rgba(0,0,0,.1);
+                cursor: pointer;
+            }
+            &:focus {
+                transform: scale(.95);
+            }
         }
     }
 }
