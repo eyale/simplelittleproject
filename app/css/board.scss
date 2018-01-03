@@ -7,6 +7,19 @@
         align-items: flex-start;
         justify-content: flex-start;
     }
+    .add-column {
+        margin: 10px;
+        background: rgba(239, 237, 237, .2);
+        height: 100%;
+        width: 120px;
+        padding: 10px;
+        color: lightgrey;
+        border-radius: 4px;
+        border: 0;
+        font-size: 16px;
+        cursor: pointer;
+        height: 50px;
+    }
 }
 .columns {
     display: flex;
@@ -52,19 +65,6 @@
             font-size: 14px;
             color: #7f7d7f;
         }
-    }
-
-    .add-column {
-        margin: 10px;
-        background: rgba(239, 237, 237, .2);
-        height: 100%;
-        width: 120px;
-        padding: 10px;
-        color: lightgrey;
-        border-radius: 4px;
-        border: 0;
-        font-size: 16px;
-        cursor: pointer;
     }
 }
 

@@ -46,14 +46,15 @@ export class Board extends React.Component {
         return (
             <div className="board">
                 <div className="grid">
-                    <Column />
-                    <div className="columns">
+                        
+                    
+                        <Column />
                         <button
                             onClick={this.togglePopup} 
                             className="add-column">
                             Add a list...
                         </button>
-                    </div>
+                    
                 </div>
 
                 {

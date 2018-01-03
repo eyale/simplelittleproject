@@ -22,7 +22,7 @@ export class Column extends React.Component {
 
     render() {
         return (
-            <div>{this.renderColumns()}</div>
+            <div className="columns">{this.renderColumns()}</div>
         );
     }
 }
