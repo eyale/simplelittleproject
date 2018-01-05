@@ -12,13 +12,7 @@ const history = createBrowserHistory();
 
 let initialState = window.__INITIAL_STATE__;
 
-// Transform into Immutable.js collections, but leave top level keys untouched
-Object.keys(initialState)
-    .forEach(key => {
-        initialState[key] = fromJS(initialState[key]);
-    });
-
-const store = makeStore(initialState);
+const store = makeStore();
 
 render(
     <Provider store={store}>

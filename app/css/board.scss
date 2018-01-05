@@ -10,7 +10,6 @@
     .add-column {
         margin: 10px;
         background: rgba(239, 237, 237, .2);
-        height: 100%;
         width: 120px;
         padding: 10px;
         color: lightgrey;
@@ -19,6 +18,8 @@
         font-size: 16px;
         cursor: pointer;
         height: 50px;
+        display: flex;
+        flex-shrink: 0;
     }
 }
 .columns {
@@ -27,7 +28,7 @@
     &__item {
         position: relative;
         display: flex;
-        width: 220px;
+        width: 280px;
         height: 100%;
         margin: 10px;
         flex-direction: column;
@@ -36,24 +37,68 @@
         border-radius: 4px;
         box-shadow: 4px 1px 15px 1px rgba(0,0,0,.4);
 
-        .header {
+        &--header {
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .settings {
+        &--settings {
             position: absolute;
             top: 0;
             right: 10px;
             cursor: pointer;
+            
+            &__actions {
+                display: none;
+                position: absolute;
+                color: #7f7d7f;
+                width: 200px;
+                border-radius: 4px;
+                padding: 10px;
+                display: none;
+                background: rgba(239, 235, 235, 0.9);
+                box-shadow: 0 0 7px 1px rgba(0,0,0,0.6);
 
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 0px;
+                    height: 5px;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-bottom: 7px solid rgba(239, 235, 235, 0.9);
+                    top: -12px;
+                    left: 3px;
+                }
+
+                &.visible {
+                    display: block;
+                }
+
+                span {
+                    font-size: 14px;
+                    margin: 4px 0;
+                }
+                button {
+                    border: 0;
+                    font-size: 14px;
+                    padding: 5px;
+                    width: auto;
+                    margin: 5px auto;
+                    border-radius: 4px;
+                    background: #ee4a4a;
+                    color: #fff;
+                    float: right;
+                    cursor: pointer;
+                }
+            }
         }
-        .card {
+        &--card {
             background: #fff;
             border-radius: 4px;
             padding: 5px;
             margin: 10px 0;
         }
-        .add-card {
+        &--add-card {
             margin: 0;
             height: 100%;
             width: 100%;

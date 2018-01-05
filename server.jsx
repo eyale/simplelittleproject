@@ -6,20 +6,14 @@ import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import routes from 'routes';
-import serverRoutes from 'server/routes';
 import favicon from 'serve-favicon';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
-import { setItems, setCart } from 'actions/ProductsActions';
-
-import items from 'server/fake-database-items.js';
-import cart from 'server/fake-database-cart.js';
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-serverRoutes(app);
 app.use(favicon(path.join(__dirname, 'public/favicon', 'favicon.ico')));
 
 app.use((req, res) => {
@@ -36,18 +30,6 @@ app.use((req, res) => {
             return res.status(404).end('Not found.');
         }
 
-        const InitialComponent = (
-            <Provider store={store}>
-                <RoutingContext {...renderProps} />
-            </Provider>
-        );
-
-        store.dispatch(setItems(items));
-        store.dispatch(setCart(cart));
-        const initialState = store.getState();
-
-        const componentHTML = renderToString(InitialComponent);
-
         const HTML = `
             <!DOCTYPE html>
             <html>
@@ -55,17 +37,13 @@ app.use((req, res) => {
                     <meta charset="utf-8">
                     <title>React Redux Fullstack Starter</title>
 
-                    <script>
-                        window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-                    </script>
                 </head>
                 <body>
-                    <div id="app">${componentHTML}</div>
+                    <div id="app"></div>
                     <script src="/bundle.js"></script>
                 </body>
             </html>
         `;
-
         res.end(HTML);
     });
 });
