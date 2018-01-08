@@ -1,10 +1,10 @@
 import {
     COLUMN_ADD,
-    COLUMN_REMOVE
+    COLUMN_REMOVE,
+    COLUMN_MENU_SHOW
 } from '../actions/ColumnsActions'
 
 export default function columnReducer(state = [], action) {
-    console.log(state)
     switch(action.type) {
         case COLUMN_ADD:
             return [...state, {
@@ -12,6 +12,7 @@ export default function columnReducer(state = [], action) {
                 id: action.id
             }]
         case COLUMN_REMOVE:
+            return [...state.filter(column => column.id !== action.id)]
         default:
             return state;
     }

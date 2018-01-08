@@ -33,7 +33,7 @@ export class Board extends React.Component {
         e.stopPropagation();
         this.togglePopup(e)
 
-        this.props.dispatch(addColumn(this.state.columnName,Math.floor(Math.random()*1000000000000)))
+        this.props.dispatch(addColumn(this.state.columnName, Math.floor(Math.random()*1000000000000)))
         return
     }
 

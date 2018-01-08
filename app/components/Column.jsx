@@ -2,48 +2,63 @@ import _ from 'lodash';
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { removeColumn } from 'actions/ColumnsActions';
+import { removeColumn, toggleMenuColumn } from 'actions/ColumnsActions';
 
 export class Column extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            showSettings: false
+            columnToShow: null,
+            isShown:false
         }
         this.toggleColumnSettings = this.toggleColumnSettings.bind(this)
         this.handleRemoveColumn = this.handleRemoveColumn.bind(this)
     }
 
-    toggleColumnSettings(e) {
+    toggleColumnSettings(e, id) {
         e.preventDefault()
-        this.setState({showSettings: !this.state.showSettings})
+
+        this.props.columns.map(column => {
+            if (column.id === id) {
+                this.setState({
+                    columnToShow: id,
+                    isShown: !this.state.isShown
+                })
+            }
+        })
     }
 
-    handleRemoveColumn(e) {
+    handleRemoveColumn(e, name, id) {
         e.preventDefault()
-        console.log(e.target);
         
-        // this.props.dispatch(removeColumn(id))
+        this.props.dispatch(removeColumn(name, id))
         this.toggleColumnSettings(e)
     }
 
     renderColumns() {
-        console.log('props',this.props) 
         const { columns } = this.props
 
         return columns.map((column, idx) => {
-            console.log(column,idx);
             
             return (
-                <div key={Math.random()} className="columns__item">
+                <div key={columns[idx].id} id={columns[idx].id} className="columns__item">
                     <div className="columns__item--header">{column.name}</div>
                     <div className="columns__item--settings">
-                        <span onClick={this.toggleColumnSettings} className="dots">...</span>
-                        <p className={`columns__item--settings__actions ${this.state.showSettings && 'visible'}`}>
+                        <span onClick={(e) => this.toggleColumnSettings(e, columns[idx].id)} className="dots">...</span>
+                        {
+                            this.state.isShown && this.state.columnToShow === columns[idx].id &&
+                            <p className="columns__item--settings__actions">
+                            <span 
+                                className="close"
+                                onClick={(e) => this.toggleColumnSettings(e, columns[idx].id)}>x</span>
                             <span>Settings</span>
-                            <button onClick={this.handleRemoveColumn}>Remove column</button>
-                        </p>
+                            <button
+                                onClick={(e) => this.handleRemoveColumn(e, columns[idx].name, columns[idx].id)}>
+                                Remove column
+                            </button>
+                            </p>
+                        }
                     </div>
                     <div className="columns__item--card">Card1</div>
                     <button className="columns__item--add-card">Add a card...</button>
