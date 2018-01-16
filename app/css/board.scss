@@ -120,6 +120,10 @@
             border-radius: 4px;
             padding: 5px;
             margin: 10px 0;
+
+            input[type=color] {
+                border: 0;
+            }
         }
         &--add-card {
             margin: 0;

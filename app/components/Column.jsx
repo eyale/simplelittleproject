@@ -10,7 +10,8 @@ export class Column extends React.Component {
 
         this.state = {
             columnToShow: null,
-            isShown:false
+            isShown:false,
+            color: '#fff'
         }
         this.toggleColumnSettings = this.toggleColumnSettings.bind(this)
         this.handleRemoveColumn = this.handleRemoveColumn.bind(this)
@@ -34,6 +35,11 @@ export class Column extends React.Component {
         
         this.props.dispatch(removeColumn(name, id))
         this.toggleColumnSettings(e)
+    }
+    changeCardColor(e) {
+        e.preventDefault()
+
+        this.setState({color: e.target.value})
     }
 
     renderColumns() {
@@ -60,7 +66,10 @@ export class Column extends React.Component {
                             </p>
                         }
                     </div>
-                    <div className="columns__item--card">Card1</div>
+                    <div className="columns__item--card" style={{backgroundColor: this.state.color}}>
+                        <input type="color"  value={this.state.color} onChange={(e) => this.changeCardColor(e)}/>
+                        Card1
+                        </div>
                     <button className="columns__item--add-card">Add a card...</button>
                 </div>
             )
