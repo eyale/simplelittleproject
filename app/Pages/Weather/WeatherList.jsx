@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import Chart from './Chart'
-import GoogleMap from './GoogleMap'
 import { map } from 'lodash';
 
 class WeatherList extends Component {
@@ -18,13 +17,12 @@ console.log(cityData);
       <tr key={Math.random()}>
         <td><i>{cityData.city.name}</i></td>
         <td><Chart data={temps} color={'purple'} units='C' /></td>
-        <td><GoogleMap lat={lat} lng={lon}/></td>
       </tr>
     )
   }
 
   render() {
-    const tHeadNames = [ 'City', 'Temperature (C)', 'Map']
+    const tHeadNames = [ 'City', 'Temperature (C)']
     
     return (
       <table className='table'>
