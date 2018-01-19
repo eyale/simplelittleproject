@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer-loader": "^3.1.0",
+    "axios": "^0.17.1",
     "babel": "^5.8.23",
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
@@ -38,8 +39,10 @@
     "react-dom": "^0.14.9",
     "react-redux": "^4.0.6",
     "react-router": "^1.0.3",
+    "react-sparklines": "^1.7.0",
     "redux": "^3.0.5",
     "redux-devtools-extension": "^2.13.2",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^3.1.2",
     "serve-favicon": "~2.3.0",

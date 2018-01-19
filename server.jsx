@@ -36,7 +36,7 @@ app.use((req, res) => {
                 <head>
                     <meta charset="utf-8">
                     <title>React Redux Fullstack Starter</title>
-
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6jEFGxOBYfshd8eD078NVu7jGHgf6Oo0"></script>
                 </head>
                 <body>
                     <div id="app"></div>

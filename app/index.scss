@@ -1,3 +1,9 @@
+@import './Pages/Home/home.scss';
+@import './Pages/About/about.scss';
+@import './Pages/Board/board.scss';
+@import './Pages/Weather/weather.scss';
+
+
 * {
     box-sizing: border-box;
 }
@@ -7,6 +13,26 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
 }
+
+.main-nav {
+    background: #002F2F;
+    height: 50px;
+    width: 100%;
+
+    .grid {
+        height: 100%;
+        width: 100%;
+        justify-content: left;
+    }
+
+    &__link {
+        color: #FFF;
+        display: inline-flex;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+}
+
 
 @media only screen and (min-width: 319px) {
     .grid {

@@ -10,6 +10,7 @@ export default class AppView extends React.Component {
                             <Link className="main-nav__link" to="/">Home</Link>
                             <Link className="main-nav__link" to="about">About Me</Link>
                             <Link className="main-nav__link" to="board">Board</Link>
+                            <Link className="main-nav__link" to="weather">Weather</Link>
                     </div>
                 </nav>
                     {this.props.children}
