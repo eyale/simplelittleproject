@@ -9,7 +9,6 @@ export default class Chart extends Component {
 
   render() {
     const {data, color, units} = this.props
-
     return (
       <div>
         <div><i>{average(data)} {units}</i></div>

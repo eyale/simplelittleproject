@@ -6,12 +6,9 @@ import { map } from 'lodash';
 
 class WeatherList extends Component {
   renderWeather(cityData) {
-    
     const name = cityData.city.name
     const temps = map(cityData.list.map(weather => weather.main.temp), (temp) => temp - 273)
     const { lon, lat } = cityData.city.coord
-console.log(cityData);
-
 
     return (
       <tr key={Math.random()}>
